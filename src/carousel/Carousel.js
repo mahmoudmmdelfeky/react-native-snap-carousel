@@ -1193,18 +1193,17 @@ export default class Carousel extends Component {
       // As a workaround, '_onScroll()' will be called manually for these items if a given
       // condition hasn't been met after a small delay.
       // WARNING: this is ok only when relying on 'momentumScrollEnd', not with 'scrollEndDrag'
-      if (index === 0 || index === itemsLength - 1) {
-        clearTimeout(this._edgeItemTimeout);
-        this._edgeItemTimeout = setTimeout(() => {
-          if (
-            !initial &&
-            index === this._activeItem &&
-            !this._onScrollTriggered
-          ) {
-            this._onScroll();
-          }
-        }, 250);
-      }
+
+      clearTimeout(this._edgeItemTimeout);
+      this._edgeItemTimeout = setTimeout(() => {
+        if (
+          !initial &&
+          index === this._activeItem &&
+          !this._onScrollTriggered
+        ) {
+          this._onScroll();
+        }
+      }, 250);
     }
   }
 
